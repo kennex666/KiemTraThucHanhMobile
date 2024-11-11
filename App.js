@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GetStartedScreen from './screens/GetStartedScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import DetailScreen from './screens/DetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,13 +18,13 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="list"
+        <Stack.Navigator initialRouteName="details"
           screenOptions={{
             headerShown: false
           }}>
           <Stack.Screen name="getstarted" component={GetStartedScreen} />
           <Stack.Screen name="list" component={ProductsScreen} />
-          <Stack.Screen name="details" component={GetStartedScreen} />
+          <Stack.Screen name="details" component={DetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
