@@ -9,6 +9,7 @@ import AssetExample from './components/AssetExample';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GetStartedScreen from './screens/GetStartedScreen';
+import ProductsScreen from './screens/ProductsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,12 +17,12 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="getstarted"
+        <Stack.Navigator initialRouteName="list"
           screenOptions={{
             headerShown: false
           }}>
           <Stack.Screen name="getstarted" component={GetStartedScreen} />
-          <Stack.Screen name="list" component={GetStartedScreen} />
+          <Stack.Screen name="list" component={ProductsScreen} />
           <Stack.Screen name="details" component={GetStartedScreen} />
         </Stack.Navigator>
       </NavigationContainer>
