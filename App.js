@@ -5,16 +5,26 @@ import { Card } from 'react-native-paper';
 
 // or any files within the Snack
 import AssetExample from './components/AssetExample';
+// or any files within the Snack
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import GetStartedScreen from './screens/GetStartedScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
-      </Card>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="getstarted"
+          screenOptions={{
+            headerShown: false
+          }}>
+          <Stack.Screen name="getstarted" component={GetStartedScreen} />
+          <Stack.Screen name="list" component={GetStartedScreen} />
+          <Stack.Screen name="details" component={GetStartedScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
