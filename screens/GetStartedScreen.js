@@ -3,7 +3,8 @@ import Text from "../components/CText";
 import Stack from "../components/Stack";
 
 
-export default function GetStartedScreen() {
+export default function GetStartedScreen({navigation}) {
+
     return (
     <Stack flexDirection="column" justifyContent="space-between" alignItems="center" flex={1} style={
         {
@@ -35,6 +36,8 @@ export default function GetStartedScreen() {
         <Stack flexDirection="row" justifyContent="center" alignItems="center" >
             <Stack flexDirection="row" justifyContent="center" alignItems="center" backgroundColor={"#E94141"} height={40} width={100} style={{
                 borderRadius: 50
+            }} onPress={() => {
+                navigation.navigate("list");
             }}>
                 <Text color="#fff" bold={true} size={15}>Get Started</Text>
             </Stack>

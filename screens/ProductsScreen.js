@@ -1,66 +1,86 @@
 import { FlatList, Image } from "react-native";
 import Text from "../components/CText";
 import Stack from "../components/Stack";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setBike } from "../redux/bikesSlice";
 
-const data = [
-    { 
-        id: 0,
-        name: "Pinarello",
-        price: "1000",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 1,
-        name: "Pina Mountai",
-        price: "1700",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 2,
-        name: "Pina Bike",
-        price: "1500",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 3,
-        name: "Pinarello",
-        price: "1000",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 4,
-        name: "Pina Mountai",
-        price: "1700",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 5,
-        name: "Pina Bike",
-        price: "1500",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 6,
-        name: "Pinarello",
-        price: "1000",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 7,
-        name: "Pina Mountai",
-        price: "1700",
-        image: require("../assets/product_home.png")
-    },
-    {
-        id: 8,
-        name: "Pina Bike",
-        price: "1500",
-        image: require("../assets/product_home.png")
-    },
+// const data = [
+//     { 
+//         id: 0,
+//         name: "Pinarello",
+//         price: 1000,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 1,
+//         name: "Pina Mountai",
+//         price: 1700,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 2,
+//         name: "Pina Bike",
+//         price: 1500,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 3,
+//         name: "Pinarello",
+//         price: 1000,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 4,
+//         name: "Pina Mountai",
+//         price: 1700,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 5,
+//         name: "Pina Bike",
+//         price: 1500,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 6,
+//         name: "Pinarello",
+//         price: 1000,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 7,
+//         name: "Pina Mountai",
+//         price: 1700,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
+//     {
+//         id: 8,
+//         name: "Pina Bike",
+//         price: 1500,
+//         image: "https://i.postimg.cc/66kQ6Cqc/product-home.png"
+//     },
 
-]
+// ]
 
-export default function ProductsScreen() {
+export default function ProductsScreen({navigation}) {
+    const [data, setProducts] = useState([]);
+
+    const dispatch = useDispatch();
+
+    // Get current bike state from Redux store
+    const bike = useSelector((state) => state.bike);
+
+    useEffect(() => {
+        fetch("https://6731d4ca7aaf2a9aff12577b.mockapi.io/products")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, []);
     return (
         <Stack flexDirection="column" flex={1} style={
             {
@@ -112,7 +132,11 @@ export default function ProductsScreen() {
             style={{width: "100%", marginTop: 20}}
                 data={data}
                 renderItem={({ item }) => (
-                    <Stack justifyContent="center" alignItems="center">
+                    <Stack justifyContent="center" alignItems="center" onPress={() =>{
+                        dispatch(setBike( item ))
+                        console.log(item)
+                        navigation.navigate("details");
+                    }}>
                         <Image source={item.image} style={{ width: 120, height: 120 }} resizeMode="contain" />
                         <Text size={15} color={"#00000099"}>{item.name}</Text>
                         <Stack flexDirection="row" justifyContent="center" alignItems="center">

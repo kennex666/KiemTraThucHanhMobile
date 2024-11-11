@@ -10,15 +10,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GetStartedScreen from './screens/GetStartedScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import { Provider } from 'react-redux';
+import { createStore } from '@reduxjs/toolkit';
+import store from './redux/store';
 import DetailScreen from './screens/DetailScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <Provider store={store}>
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="details"
+        <Stack.Navigator initialRouteName="getstarted"
           screenOptions={{
             headerShown: false
           }}>
@@ -28,6 +32,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
+    </Provider>
   );
 }
 

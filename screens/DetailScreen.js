@@ -1,8 +1,16 @@
 import { FlatList, Image, ScrollView } from "react-native";
 import Text from "../components/CText";
 import Stack from "../components/Stack";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function DetailScreen() {
+export default function DetailScreen({navigation}) {
+
+
+    const dispatch = useDispatch();
+
+    // Get current bike state from Redux store
+    const bike = useSelector((state) => state.bike);
+
     return (
         <ScrollView>
             <Stack width={"100%"} style={
@@ -16,7 +24,7 @@ export default function DetailScreen() {
                         padding: 15,
                         borderRadius: 10,
                     }}>
-                        <Image source={require("../assets/product_home.png")} style={{
+                        <Image source={bike.image} style={{
                             width: 250,
                             height: 250
                         }} resizeMode="contain" />
@@ -24,9 +32,9 @@ export default function DetailScreen() {
                 </Stack>
                 {/* Title product */}
                 <Stack>
-                    <Text size={25} bold={true}>Pina Mountain</Text>
+                    <Text size={25} bold={true}>{bike.name}</Text>
                     <Stack flexDirection="row" justifyContent="space-between" alignItems="center">
-                        <Text size={17} color="#00000096">15% OFF I 350$</Text>
+                        <Text size={17} color="#00000096">15% OFF I {bike.price}$</Text>
                         <Text size={17} style={{
                             textDecorationLine: "line-through",
                             marginLeft: 15
@@ -60,7 +68,11 @@ export default function DetailScreen() {
                         borderRadius: 50,
                         paddingVertical: 10,
                         paddingHorizontal: 30
-                    }} width={150}>
+                    }} width={150} onPress={
+                        ()=>{
+                            navigation.navigate("list");
+                        }
+                    }>
                         <Text color="#fff" size={17} textAlign="center">Add to cart</Text>
                     </Stack>
                 </Stack>
