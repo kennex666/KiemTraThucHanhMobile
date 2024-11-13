@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import bikesReducer from './bikesSlice';
+import bikeReducer from './bikesSlice';
 
 const store = configureStore({
     reducer: {
-        bike: bikesReducer,  // Store a single bike's data
+        bike: bikeReducer,  // Store a single bike's data
     },
 });
 

@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "kiemtra-thcuoi-mobile",
-    "slug": "snack-6ef9bf4d-1dbc-4eef-9137-917db776b0b8",
+    "name": "app-kiemtra",
+    "slug": "app-kiemtra",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

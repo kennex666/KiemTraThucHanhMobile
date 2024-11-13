@@ -1,9 +1,8 @@
 import { FlatList, Image } from "react-native";
-import Text from "../components/CText";
-import Stack from "../components/Stack";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBike } from "../redux/bikesSlice";
+import { Stack, Text } from "rn-lightspeed";
 
 // const data = [
 //     { 
@@ -63,7 +62,7 @@ import { setBike } from "../redux/bikesSlice";
 
 // ]
 
-export default function ProductsScreen({navigation}) {
+export default function ProductsScreen({navigation} : any) {
     const [data, setProducts] = useState([]);
 
     const dispatch = useDispatch();
@@ -137,7 +136,9 @@ export default function ProductsScreen({navigation}) {
                         console.log(item)
                         navigation.navigate("details");
                     }}>
-                        <Image source={item.image} style={{ width: 120, height: 120 }} resizeMode="contain" />
+                        <Image source={{
+                            uri: item.image
+                        }} style={{ width: 120, height: 120 }} resizeMode="contain" />
                         <Text size={15} color={"#00000099"}>{item.name}</Text>
                         <Stack flexDirection="row" justifyContent="center" alignItems="center">
                             <Text size={15} color="#F7BA83">$</Text>

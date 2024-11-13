@@ -1,9 +1,8 @@
 import { FlatList, Image, ScrollView } from "react-native";
-import Text from "../components/CText";
-import Stack from "../components/Stack";
 import { useDispatch, useSelector } from "react-redux";
+import { Stack, Text } from "rn-lightspeed";
 
-export default function DetailScreen({navigation}) {
+export default function DetailScreen({navigation} : any) {
 
 
     const dispatch = useDispatch();
@@ -24,7 +23,9 @@ export default function DetailScreen({navigation}) {
                         padding: 15,
                         borderRadius: 10,
                     }}>
-                        <Image source={bike.image} style={{
+                        <Image source={{
+                            uri: bike.image
+                        }} style={{
                             width: 250,
                             height: 250
                         }} resizeMode="contain" />
