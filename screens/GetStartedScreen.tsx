@@ -59,7 +59,10 @@ export default function GetStartedScreen({navigation} : any) {
               borderRadius: 50,
             }}
             onPress={() => {
-              navigation.navigate("list");
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "list" }],
+              });
             }}
           >
             <Text color="#fff" bold={true} size={15} value="Get Started" />
