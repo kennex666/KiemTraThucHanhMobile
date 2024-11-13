@@ -13,13 +13,13 @@ export default function GetStartedScreen({navigation} : any) {
         style={{
           backgroundColor: "#fff",
           paddingHorizontal: 20,
-          paddingVertical: 60,
+          paddingVertical: 150,
         }}
       >
         <Stack flexDirection="row" justifyContent="center" alignItems="center">
           <Text
             textAlign="center"
-            size={16}
+            size={25}
             style={{ width: "80%" }}
             value="A premium online store for sporter and their stylish choice"
           />

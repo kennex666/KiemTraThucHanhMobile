@@ -29,8 +29,9 @@ export default function DetailScreen({navigation} : any) {
           width={"100%"}
           style={{
             backgroundColor: "#fff",
-            paddingHorizontal: 20,
+            paddingTop: 70,
             paddingVertical: 20,
+            paddingHorizontal: 20,
           }}
         >
           <Stack
@@ -38,6 +39,9 @@ export default function DetailScreen({navigation} : any) {
             justifyContent="center"
             alignItems="center"
             width={"100%"}
+            style={{
+                marginBottom: 50
+            }}
           >
             <Stack
               backgroundColor="#E941411A"
@@ -109,7 +113,7 @@ export default function DetailScreen({navigation} : any) {
             justifyContent="space-between"
             alignItems="center"
             style={{
-              marginTop: 20,
+              marginTop: 50,
               paddingHorizontal: 20,
             }}
             width={"100%"}
